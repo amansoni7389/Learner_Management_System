@@ -1,44 +1,33 @@
 package com.app.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.entity.Student;
-import com.app.repository.StudentRepository;
+import com.app.entity.User;
+import com.app.repository.UserRepository;
 
 @Service
 public class UserService {
-	 @Autowired
-	    private StudentRepository studentRepository;
 
-	    // Add a new student
-	    public Student addStudent(Student student) {
-	        // Additional logic, like assigning default values or checking constraints
-	        return studentRepository.save(student);
-	    }
+    @Autowired
+    private UserRepository userRepository;
 
-	    // Update an existing student
-	    public Student updateStudent(Student student) {
-	        // Check if student exists before updating
-	        return studentRepository.save(student);
-	    }
+    // Method to add or update a user (Admin, Teacher, Student)
+    public User addUser(User user) {
+        return userRepository.save(user);
+    }
 
-	    // Delete a student by ID
-	    public void deleteStudent(Long studentId) {
-	        studentRepository.deleteById(studentId);
-	    }
-
-	    // Get student by ID
-	    public Optional<Student> getStudentById(Long id) {
-	        return studentRepository.findById(id);
-	    }
-
-	    // Get all students
-	    public List<Student> getAllStudents() {
-	        return studentRepository.findAll();
-	    }
+    // Method to retrieve all users (Admins, Teachers, Students)
+    
+    // Method to delete a user by ID
+    public void deleteUser(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            userRepository.delete(user.get());
+        } else {
+            throw new RuntimeException("User not found with ID: " + userId);
+        }
+    }
 }
-
