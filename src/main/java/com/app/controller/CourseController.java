@@ -29,15 +29,15 @@ public class CourseController {
     }
 
     // Get all courses
-    @GetMapping
-    public ResponseEntity<List<Course>> getAllCourses() {
-        try {
-            List<Course> courses = courseInterface.getAllCourses();
-            return new ResponseEntity<>(courses, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping("/getAll")
+//    public ResponseEntity<List<Course>> getAllCourses() {
+//        try {
+//            List<Course> courses = courseInterface.getAllCourses();
+//            return new ResponseEntity<>(courses, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     // Get a course by ID
     @GetMapping("/{id}")
@@ -72,19 +72,19 @@ public class CourseController {
     }
 
     // Delete a course by ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCourse(@PathVariable Long id) {
-        try {
-            Optional<Course> course = courseInterface.getCourseById(id);
-            if (course.isPresent()) {
-                courseInterface.deleteCourse(id);
-                return new ResponseEntity<>("Course deleted successfully!", HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Course not found with ID: " + id, HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error occurred while deleting course: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<String> deleteCourse(@PathVariable Long id) {
+//        try {
+//            Optional<Course> course = courseInterface.getCourseById(id);
+//            if (course.isPresent()) {
+//                courseInterface.deleteCourse(id);
+//                return new ResponseEntity<>("Course deleted successfully!", HttpStatus.OK);
+//            } else {
+//                return new ResponseEntity<>("Course not found with ID: " + id, HttpStatus.NOT_FOUND);
+//            }
+//        } catch (Exception e) {
+//            return new ResponseEntity<>("Error occurred while deleting course: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }
 
