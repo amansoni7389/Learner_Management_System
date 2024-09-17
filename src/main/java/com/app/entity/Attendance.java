@@ -18,19 +18,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Attendance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
     private Long id;
     private Date date;
     private boolean present;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
+//    @ManyToOne
+//    @JoinColumn(name = "student_id")
+//    private Student student;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "course_id")
+//    private Course course;
 
     // Getters and Setters
 }

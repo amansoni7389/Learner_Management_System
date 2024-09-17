@@ -12,7 +12,6 @@ public class AdminController {
 
     private UserService userService;
 
-    //Comment this code after one run for single root user
     @PostMapping("/createAdmin")
     public ResponseEntity<String> saveAdmin(@RequestBody User user) {
         userService.addUser(user);
